@@ -20,28 +20,8 @@ MainWindow::~MainWindow()
 }
 
 
-void test(){
-
-}
-template<class T, class...Args>
-QString test(T first, Args... args){
-    static QString res;
-    qDebug()<<typeid(T).name()<<" "<<first<<endl;
-    if(typeid (T).name() == "i"){
-
-    }
-    //else res = res+first+" ";
-    test(args...);
-    return res;
-}
-
-
 void MainWindow::on_pushButton_clicked()
 {
-    QString rres;
-    //rres = test<int, int, QString>(2, 3, "wd");
-    rres += QString(3);
-    std::cout<<rres<<endl;
     if(ui->user_name->text().isEmpty()){
         QMessageBox::critical(this, "Error", "name can't be empty");
         return;

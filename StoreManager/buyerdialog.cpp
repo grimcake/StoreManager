@@ -67,38 +67,44 @@ void BuyerDialog::on_pushButton_5_clicked()
 
 void BuyerDialog::on_pushButton_3_clicked()
 {
-    QString INID, GID, UID, JHDATE, SHDATE;
+    QString INID, GID, UID, JHDATE, SHDATE("NULL");
     int INNUMBER, SFSH;
 
     DBmodule* dbmodule = DBmodule::getDBmodule();
     dbmodule->connect();
     QSqlQuery query;
+
+    //生成最大的单号
     query = dbmodule->queryDatabase("select max(INID) from T_JHXX;");
     while(query.next()){
         //QString补足6位前导0的方法
         INID = QString("%1").arg(query.value("max(INID)").toString().toInt()+1, 6, 10, QChar('0'));
     }
-    //qDebug()<<INID<<endl;
+
 
     query = dbmodule->queryDatabase("select GID from T_HWXX where GNAME = '"+ui->comboBox->currentText()+"';");
     while(query.next()){
         GID = query.value("GID").toString();
     }
-    //qDebug()<<GID<<endl;
+
 
     UID = this->UID;
-    //qDebug()<<UID<<endl;
+
 
     QDateTime current_time = QDateTime::currentDateTime();
     JHDATE = current_time.toString("yyyyMMdd");
-    //qDebug()<<JHDATE<<endl;
+
 
     INNUMBER = ui->lineEdit->text().toInt();
     SFSH = 0;
 
-    query = dbmodule->queryDatabase("insert into T_JHXX values()");
-
-
+    //qDebug()<<INID<<" "<<GID<<" "<<INNUMBER<<" "<<UID<<" "<<SHDATE<<" "<<SFSH<<" "<<JHDATE<<endl;
+    QString sqlsentence("insert into T_JHXX values('"+INID+"','"+GID+"',"+QString::number(INNUMBER)+",'"+UID+"',"+SHDATE+","+QString::number(SFSH)+","+JHDATE+");");
+    qDebug()<<sqlsentence<<endl;
+    bool ret = query.exec(sqlsentence);
+    if(ret == false){
+        qDebug()<<"insert error"<<endl;
+    }
 
     dbmodule->disconnect();
 
