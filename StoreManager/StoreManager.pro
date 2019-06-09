@@ -25,7 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        auditorbuyertab.cpp \
         auditordialog.cpp \
+        auditorsalestab.cpp \
         buyerdialog.cpp \
         dbmodule.cpp \
         login.cpp \
@@ -34,7 +36,9 @@ SOURCES += \
         salesdialog.cpp
 
 HEADERS += \
+        auditorbuyertab.h \
         auditordialog.h \
+        auditorsalestab.h \
         buyerdialog.h \
         dbmodule.h \
         login.h \
@@ -43,7 +47,9 @@ HEADERS += \
         sqlhelps.h
 
 FORMS += \
+        auditorbuyertab.ui \
         auditordialog.ui \
+        auditorsalestab.ui \
         buyerdialog.ui \
         login.ui \
         mainwindow.ui \
