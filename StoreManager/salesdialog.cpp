@@ -50,6 +50,7 @@ void SalesDialog::on_pushButton_clicked()
     model->setItem(tableNum, 1, new QStandardItem(num));
     model->setItem(tableNum, 2, new QStandardItem(time));
     tableNum++;
+    ui->lineEdit->text() = "";
 }
 
 void SalesDialog::on_pushButton_4_clicked()
@@ -67,6 +68,7 @@ void SalesDialog::on_pushButton_5_clicked()
 
 void SalesDialog::on_pushButton_3_clicked()
 {
+    int rowIndex = ui->tableView->currentIndex().row();
     QString OUTID, GID, UID, CHDATE, SHDATE("NULL");
     int OUTNUMBER, SFSH, QHSL, YYSL=0;
 
@@ -82,7 +84,7 @@ void SalesDialog::on_pushButton_3_clicked()
     }
 
 
-    query = dbmodule->queryDatabase("select GID from T_HWXX where GNAME = '"+ui->comboBox->currentText()+"';");
+    query = dbmodule->queryDatabase("select GID from T_HWXX where GNAME = '"+model->data(model->index(rowIndex, 0)).toString()+"';");
     while(query.next()){
         GID = query.value("GID").toString();
     }
@@ -95,7 +97,7 @@ void SalesDialog::on_pushButton_3_clicked()
     CHDATE = current_time.toString("yyyyMMdd");
 
 
-    OUTNUMBER = ui->lineEdit->text().toInt();
+    OUTNUMBER = model->data(model->index(rowIndex, 1)).toString().toInt();
     SFSH = 0;
 
     //查询原有货物数量
@@ -103,7 +105,7 @@ void SalesDialog::on_pushButton_3_clicked()
     while(query.next()){
         YYSL = query.value("GSTORE").toInt();
     }
-    QHSL = (YYSL>OUTNUMBER)?0:(OUTNUMBER-YYSL);
+    QHSL = 0;
 
     //qDebug()<<INID<<" "<<GID<<" "<<INNUMBER<<" "<<UID<<" "<<SHDATE<<" "<<SFSH<<" "<<JHDATE<<endl;
     QString sqlsentence("insert into T_CHXX values('"+OUTID+"','"+GID+"',"+QString::number(OUTNUMBER)+",'"+UID+"',"+SHDATE+","+QString::number(SFSH)+","+QString::number(QHSL)+","+CHDATE+");");
@@ -112,6 +114,6 @@ void SalesDialog::on_pushButton_3_clicked()
     if(ret == false){
         qDebug()<<"insert error"<<endl;
     }
-
+    model->removeRow(rowIndex);
     dbmodule->disconnect();
 }

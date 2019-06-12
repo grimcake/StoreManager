@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    loginWidget = NULL;
 }
 
 MainWindow::~MainWindow()
@@ -40,6 +41,9 @@ void MainWindow::on_pushButton_clicked()
     query = dbmodule->queryDatabase("select UPASS from T_RYXX where UID = " + name + ";");
     while(query.next()){
         if(query.value("UPASS") == pwd){
+            if(loginWidget != NULL){
+                delete loginWidget;
+            }
             loginWidget = new Login(name);
             QObject::connect(this, SIGNAL(userLogin()), loginWidget, SLOT(onUserLogin()));
             QObject::connect(loginWidget, SIGNAL(userLogout()), this, SLOT(onUserLogout()));

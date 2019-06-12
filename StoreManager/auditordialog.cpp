@@ -26,3 +26,5 @@ void AuditorDialog::on_pushButton_clicked()
 {
 
 }
+
+

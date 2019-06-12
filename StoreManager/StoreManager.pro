@@ -28,32 +28,41 @@ SOURCES += \
         auditorbuyertab.cpp \
         auditordialog.cpp \
         auditorsalestab.cpp \
+        buyercalldialog.cpp \
         buyerdialog.cpp \
+        buyerstatedialog.cpp \
         dbmodule.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
-        salesdialog.cpp
+        salesdialog.cpp \
+        salesstatedialog.cpp
 
 HEADERS += \
         auditorbuyertab.h \
         auditordialog.h \
         auditorsalestab.h \
+        buyercalldialog.h \
         buyerdialog.h \
+        buyerstatedialog.h \
         dbmodule.h \
         login.h \
         mainwindow.h \
         salesdialog.h \
+        salesstatedialog.h \
         sqlhelps.h
 
 FORMS += \
         auditorbuyertab.ui \
         auditordialog.ui \
         auditorsalestab.ui \
+        buyercalldialog.ui \
         buyerdialog.ui \
+        buyerstatedialog.ui \
         login.ui \
         mainwindow.ui \
-        salesdialog.ui
+        salesdialog.ui \
+        salesstatedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

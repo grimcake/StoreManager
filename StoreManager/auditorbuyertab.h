@@ -16,9 +16,12 @@ public:
     explicit AuditorBuyerTab(QWidget *parent = nullptr);
     ~AuditorBuyerTab();
     void initTableWidget();
+    void update(QString GID, int num);
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::AuditorBuyerTab *ui;

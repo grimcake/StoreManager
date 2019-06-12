@@ -50,6 +50,7 @@ void BuyerDialog::on_pushButton_clicked()
     model->setItem(tableNum, 2, new QStandardItem(time));
 
     tableNum++;
+    ui->lineEdit->text() = "";
 }
 
 void BuyerDialog::on_pushButton_4_clicked()
@@ -67,6 +68,7 @@ void BuyerDialog::on_pushButton_5_clicked()
 
 void BuyerDialog::on_pushButton_3_clicked()
 {
+    int rowIndex = ui->tableView->currentIndex().row();
     QString INID, GID, UID, JHDATE, SHDATE("NULL");
     int INNUMBER, SFSH;
 
@@ -82,7 +84,7 @@ void BuyerDialog::on_pushButton_3_clicked()
     }
 
 
-    query = dbmodule->queryDatabase("select GID from T_HWXX where GNAME = '"+ui->comboBox->currentText()+"';");
+    query = dbmodule->queryDatabase("select GID from T_HWXX where GNAME = '"+model->data(model->index(rowIndex, 0)).toString()+"';");
     while(query.next()){
         GID = query.value("GID").toString();
     }
@@ -95,7 +97,7 @@ void BuyerDialog::on_pushButton_3_clicked()
     JHDATE = current_time.toString("yyyyMMdd");
 
 
-    INNUMBER = ui->lineEdit->text().toInt();
+    INNUMBER = model->data(model->index(rowIndex, 1)).toInt();
     SFSH = 0;
 
     //qDebug()<<INID<<" "<<GID<<" "<<INNUMBER<<" "<<UID<<" "<<SHDATE<<" "<<SFSH<<" "<<JHDATE<<endl;
@@ -105,7 +107,8 @@ void BuyerDialog::on_pushButton_3_clicked()
     if(ret == false){
         qDebug()<<"insert error"<<endl;
     }
-
+    model->removeRow(rowIndex);
     dbmodule->disconnect();
 
 }
+

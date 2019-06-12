@@ -6,48 +6,100 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
-    <height>436</height>
+    <width>519</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>登录</string>
   </property>
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>140</y>
-     <width>241</width>
+     <x>30</x>
+     <y>20</y>
+     <width>216</width>
      <height>181</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QPushButton" name="pbn_buyer">
       <property name="text">
-       <string>Buyer</string>
+       <string>进货</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pbn_sales">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton">
       <property name="text">
-       <string>Sales</string>
+       <string>缺货提醒</string>
       </property>
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="pbn_auditor">
+     <widget class="QPushButton" name="pbn_sales">
       <property name="text">
-       <string>Auditor</string>
+       <string>出货</string>
       </property>
      </widget>
     </item>
     <item row="3" column="0">
+     <widget class="QPushButton" name="pbn_auditor">
+      <property name="text">
+       <string>审核</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>251</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
      <widget class="QPushButton" name="pbn_logout">
       <property name="text">
-       <string>Logout</string>
+       <string>退出登录</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>20</y>
+     <width>160</width>
+     <height>107</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>进货订单审核状态</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="text">
+       <string>出货订单审核状态</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="text">
+       <string>订单审核记录</string>
       </property>
      </widget>
     </item>

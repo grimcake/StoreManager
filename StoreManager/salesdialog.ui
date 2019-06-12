@@ -16,8 +16,8 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>100</y>
+     <x>50</x>
+     <y>30</y>
      <width>351</width>
      <height>251</height>
     </rect>
@@ -26,8 +26,8 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>380</y>
+     <x>50</x>
+     <y>310</y>
      <width>253</width>
      <height>93</height>
     </rect>
@@ -56,15 +56,7 @@
        <widget class="QComboBox" name="comboBox"/>
       </item>
       <item row="2" column="2">
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>重置</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QVBoxLayout" name="verticalLayout"/>
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="pushButton">
@@ -80,8 +72,8 @@
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>100</y>
+     <x>430</x>
+     <y>30</y>
      <width>160</width>
      <height>107</height>
     </rect>
